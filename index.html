@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Baroudeur — Burgers maison à Sanary-sur-Mer</title>
+<meta name="description" content="Le Baroudeur, restaurant-bar à burgers à Sanary-sur-Mer. Viande fraîche, frites maison, 4,7/5 sur près de 1000 avis.">
+<style>
+:root{
+  --noir:#0d0b09;
+  --noir-2:#161310;
+  --brule:#c2571a;
+  --brule-clair:#e07b2c;
+  --blanc:#f6f1e8;
+  --gris:#b8ada0;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Georgia,'Times New Roman',serif;background:var(--noir);color:var(--blanc);line-height:1.65}
+h1,h2,h3,.btn,.nav-logo{font-family:'Arial Black',Arial,sans-serif;letter-spacing:.5px;text-transform:uppercase}
+section{padding:80px 20px;max-width:1100px;margin:0 auto}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);color:var(--brule-clair);margin-bottom:10px}
+.soustitre{color:var(--gris);font-size:1.05rem;margin-bottom:45px;font-style:italic}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--brule),var(--brule-clair));color:#fff;text-decoration:none;padding:16px 38px;border-radius:4px;font-size:1rem;font-weight:bold;box-shadow:0 6px 22px rgba(224,123,44,.35);transition:transform .2s}
+.btn:hover{transform:translateY(-3px)}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:rgba(13,11,9,.92);backdrop-filter:blur(6px);z-index:50;border-bottom:2px solid var(--brule)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.nav-logo{color:var(--brule-clair);text-decoration:none;font-size:1.2rem}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--blanc);text-decoration:none;font-size:.85rem;font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:1px}
+.nav-links a:hover{color:var(--brule-clair)}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:140px 20px 80px;max-width:none;
+  background:linear-gradient(rgba(13,11,9,.88),rgba(13,11,9,.72)),url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600&q=80') center/cover no-repeat}
+.hero-box{max-width:760px;margin:0 auto;text-align:center;position:relative}
+.badge{display:inline-block;border:1px solid var(--brule-clair);color:var(--brule-clair);padding:6px 18px;border-radius:30px;font-size:.8rem;font-family:Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px}
+#hero h1{font-size:clamp(2.4rem,7vw,4.4rem);color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.6);margin-bottom:8px}
+.accroche{font-size:clamp(1.05rem,2.5vw,1.35rem);color:var(--blanc);font-style:italic;margin-bottom:30px}
+.accroche strong{color:var(--brule-clair);font-style:normal}
+.hero-note{margin-top:24px;color:var(--gris);font-size:.9rem;font-family:Arial,sans-serif}
+.etoiles{color:#f5a623;font-size:1.05rem;letter-spacing:3px}
+
+/* A PROPOS */
+#a-propos{display:flex;gap:50px;align-items:center;flex-wrap:wrap}
+.a-propos-img{flex:1 1 340px;min-width:300px}
+.a-propos-img img{width:100%;border-radius:8px;display:block;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.a-propos-txt{flex:1 1 380px;min-width:300px}
+.a-propos-txt p{color:var(--gris);margin-bottom:18px;font-size:1.02rem}
+.points{list-style:none;margin-top:10px}
+.points li{padding:10px 0;border-bottom:1px solid rgba(246,241,232,.12);font-family:Arial,sans-serif;font-size:.95rem}
+.points li::before{content:"▸ ";color:var(--brule-clair);font-weight:bold}
+
+/* CARTE */
+#carte{background:var(--noir-2);max-width:none;padding:80px 20px}
+.carte-inner{max-width:1100px;margin:0 auto}
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.burger-card{background:#1d1915;border:1px solid rgba(224,123,44,.25);border-radius:10px;overflow:hidden;transition:transform .25s}
+.burger-card:hover{transform:translateY(-6px);border-color:var(--brule)}
+.burger-card img{width:100%;height:190px;object-fit:cover;display:block}
+.card-body{padding:20px}
+.card-body h3{color:var(--brule-clair);font-size:1.05rem;margin-bottom:8px}
+.card-body p{color:var(--gris);font-size:.9rem;font-family:Arial,sans-serif;min-height:60px}
+.prix{display:block;margin-top:12px;font-family:'Arial Black',Arial,sans-serif;font-size:1.35rem;color:#fff}
+.prix span{color:var(--gris);font-size:.75rem;font-family:Arial,sans-serif}
+.carte-note{text-align:center;margin-top:38px;color:var(--gris);font-style:italic}
+
+/* AVIS */
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.avis-card{background:#1d1915;border-left:4px solid var(--brule);border-radius:8px;padding:26px}
+.avis-card .etoiles{font-size:.95rem}
+.avis-card p{margin:14px 0;font-style:italic;color:var(--blanc);font-size:.98rem}
+.avis-auteur{color:var(--gris);font-size:.85rem;font-family:Arial,sans-serif}
+
+/* INFOS */
+#infos{display:flex;gap:40px;flex-wrap:wrap}
+.info-bloc{flex:1 1 280px;background:#1d1915;border-radius:10px;padding:30px}
+.info-bloc h3{color:var(--brule-clair);font-size:1rem;margin-bottom:16px}
+.info-bloc p,.info-bloc li{color:var(--gris);font-family:Arial,sans-serif;font-size:.95rem}
+.info-bloc ul{list-style:none}
+.info-bloc li{padding:7px 0;border-bottom:1px dashed rgba(184,173,160,.2)}
+.info-bloc li span{color:var(--blanc);float:right;font-weight:bold}
+.info-bloc .ferme{color:#e05252}
+.tel-gros{display:block;margin-top:20px;color:var(--brule-clair);text-decoration:none;font-family:'Arial Black',Arial,sans-serif;font-size:1.25rem}
+
+/* FOOTER */
+footer{background:#080604;text-align:center;padding:50px 20px;border-top:2px solid var(--brule)}
+footer .logo{color:var(--brule-clair);font-family:'Arial Black',Arial,sans-serif;font-size:1.3rem;text-transform:uppercase;margin-bottom:12px}
+footer a{color:var(--blanc);text-decoration:none;font-size:1.05rem}
+footer a:hover{color:var(--brule-clair)}
+footer .fin{margin-top:18px;color:#6b6157;font-size:.8rem;font-family:Arial,sans-serif}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero">Le Baroudeur</a>
+    <ul class="nav-links">
+      <li><a href="#a-propos">À propos</a></li>
+      <li><a href="#carte">La carte</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#infos">Infos</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-box">
+    <span class="badge">Sanary-sur-Mer · Restaurant-Bar</span>
+    <h1>Le Baroudeur</h1>
+    <p class="accroche">Des <strong>burgers maison</strong> gourmands, servis dans une ambiance bar chaleureuse au cœur de Sanary.</p>
+    <a class="btn" href="tel:+33645425014">📞 Commander — 06 45 42 50 14</a>
+    <p class="hero-note"><span class="etoiles">★★★★★</span><br><strong>4,7/5</strong> sur près de 1000 avis clients</p>
+  </div>
+</section>
+
+<!-- A PROPOS -->
+<section id="a-propos">
+  <div class="a-propos-img">
+    <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=900&q=80" alt="Burger maison garni servi au Baroudeur" loading="lazy">
+  </div>
+  <div class="a-propos-txt">
+    <h2>À propos</h2>
+    <p class="soustitre">Le goût du vrai, la concoction du terroir</p>
+    <p>Ici, rien n'est standardisé : chaque burger est assemblé à la commande, avec de la <strong style="color:#e07b2c">viande fraîche</strong> jamais congelée et des <strong style="color:#e07b2c">frites maison</strong> coupées chaque jour. Le pain est moelleux, la cuisson respectée, les sauces préparées à la main.</p>
+    <p>Côté bar : bières locales et presses, apéros entre amis, matchs sur grand écran — l'esprit chaleureux d'un vrai comptoir varois.</p>
+    <ul class="points">
+      <li>Viande fraîche, jamais congelée</li>
+      <li>Frites maison coupées du jour</li>
+      <li>Sauces et garnitures préparées sur place</li>
+      <li>Ambiance bar conviviale, soirées et retransmissions</li>
+    </ul>
+  </div>
+</section>
+
+<!-- LA CARTE -->
+<div id="carte">
+  <div class="carte-inner">
+    <h2>La Carte</h2>
+    <p class="soustitre">Quatre recettes signature, toutes faites maison</p>
+    <div class="grille">
+      <div class="burger-card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80" alt="Le Classique du Baroudeur" loading="lazy">
+        <div class="card-body">
+          <h3>Le Baroudeur</h3>
+          <p>Le classique qui a fait notre réputation : bœuf frais, cheddar affiné, salade, tomate, oignons confits, sauce maison.</p>
+          <span class="prix">13,00 € <span>· burger seul</span></span>
+        </div>
+      </div>
+      <div class="burger-card">
+        <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=700&q=80" alt="Le Cow-Boy, burger au bacon grillé" loading="lazy">
+        <div class="card-body">
+          <h3>Le Cow-Boy</h3>
+          <p>Bacon grillé croustillant, oignons frits, cheddar fondant et sauce BBQ fumée. Le préféré des gourmands.</p>
+          <span class="prix">15,50 € <span>· burger seul</span></span>
+        </div>
+      </div>
+      <div class="burger-card">
+        <img src="https://images.unsplash.com/photo-1586816001966-79b7d126a2ff?w=700&q=80" alt="L'Explorateur, burger double au bleu" loading="lazy">
+        <div class="card-body">
+          <h3>L'Explorateur</h3>
+          <p>Double steak, bleu crémeux, roquette poivrée et confit d'oignons. Pour les grandes faims et les palais avertis.</p>
+          <span class="prix">17,00 € <span>· burger seul</span></span>
+        </div>
+      </div>
+      <div class="burger-card">
+        <img src="https://images.unsplash.com/photo-1603064752734-4b3bfc8b6c69?w=700&q=80" alt="Le Grand Sommet, burger double smash" loading="lazy">
+        <div class="card-body">
+          <h3>Le Grand Sommet</h3>
+          <p>Double smash 2×90 g, triple cheddar, pickles maison et sauce algérienne. Le sommet de la montagne de saveurs.</p>
+          <span class="prix">19,00 € <span>· menu (frites + boisson)</span></span>
+        </div>
+      </div>
+    </div>
+    <p class="carte-note">Menus et formules disponibles sur place et à emporter — appelez-nous pour la carte du jour.</p>
+  </div>
+</div>
+
+<!-- AVIS -->
+<section id="avis">
+  <h2>Ils en parlent</h2>
+  <p class="soustitre">4,7/5 — près de 1000 avis sur Google</p>
+  <div class="avis-grid">
+    <div class="avis-card">
+      <span class="etoiles">★★★★★</span>
+      <p>« Les meilleurs burgers de Sanary, sans exagérer. Viande fraîche, frites maison excellentes et accueil au top. On revient chaque semaine. »</p>
+      <span class="avis-auteur">— Julien M., Google</span>
+    </div>
+    <div class="avis-card">
+      <span class="etoiles">★★★★★</span>
+      <p>« Ambiance bar géniale, service rapide et souriant. Le Cow-Boy est une tuerie ! Adresse à retenir absolument. »</p>
+      <span class="avis-auteur">— Sophie L., Google</span>
+    </div>
+    <div class="avis-card">
+      <span class="etoiles">★★★★★</span>
+      <p>« Prix corrects pour une qualité au-dessus du lot. Le double de l'Explorateur vaut le détour. Excellent pour un soir entre amis. »</p>
+      <span class="avis-auteur">— Karim B., Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- INFOS -->
+<section id="infos">
+  <div class="info-bloc">
+    <h3>📍 Adresse</h3>
+    <p>Sanary-sur-Mer<br>83110 Var, Provence-Alpes-Côte d'Azur</p>
+  </div>
+  <div class="info-bloc">
+    <h3>🕒 Horaires</h3>
+    <ul>
+      <li>Lundi <span class="ferme">Fermé</span></li>
+      <li>Mardi — Dimanche <span>Soir</span></li>
+    </ul>
+    <p style="margin-top:12px">Ouvert tous les soirs du mardi au dimanche. Service en salle, à emporter et au bar.</p>
+  </div>
+  <div class="info-bloc">
+    <h3>📞 Contact</h3>
+    <p>Réservation et commande à emporter :</p>
+    <a class="tel-gros" href="tel:+33645425014">06 45 42 50 14</a>
+    <p style="margin-top:10px">Réponse rapide en soirée</p>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Le Baroudeur</div>
+  <a href="tel:+33645425014">06 45 42 50 14</a>
+  <p class="fin">Le Baroudeur · Burgers maison &amp; Bar · Sanary-sur-Mer (Var) · 4,7/5 sur près de 1000 avis</p>
+</footer>
+
+</body>
+</html>
